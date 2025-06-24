@@ -1,0 +1,26 @@
+POST http://localhost:8899/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "identity": "bob@bobmail.com",
+  "password": "mybob123456"
+}
+
+###
+POST http://localhost:8899/api/auth/register HTTP/1.1
+###
+GET http://localhost:8899/api/auth/me HTTP/1.1
+
+###
+
+POST http://localhost:8899/api/post HTTP/1.1
+Content-Type: application/json
+
+{
+  "message": "Hello, CC20"
+  # "message": "Hello, CC21"
+}
+
+###
+
+GET http://localhost:8899/api/auth/men HTTP/1.1
