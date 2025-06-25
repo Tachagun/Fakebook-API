@@ -9,6 +9,6 @@ export default async function (signal) {
     console.error("Error during disconnection", err);
   } 
   finally {
-    // process.exit(0);
+    process.exit(0);
   }
 }

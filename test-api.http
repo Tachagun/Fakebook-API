@@ -1,14 +1,27 @@
+
+
+###
+POST http://localhost:8899/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "mobile": "0898765432",
+  "email": "donkey@popmail.com",
+  "firstName": "Donkey",
+  "lastName": "Kikikiki",
+  "password": "mydonkey123456",
+  "confirmPassword": "mydonkey123456"
+}
+
+###
+# Login API
 POST http://localhost:8899/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "identity": "bob@bobmail.com",
-  "password": "mybob123456"
+  "identity": "poppy@popmail.com",
+  "password": "mypoppy123456"
 }
-
-###
-POST http://localhost:8899/api/auth/register HTTP/1.1
-
 
 
 ###
