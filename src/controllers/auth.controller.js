@@ -47,7 +47,7 @@ export async function register(req, res, next) {
     });
 
     res.json({
-      msg: `Register Success, Welcome User[${result.firstName} ${result.lastName}] to FakeTaxi `,
+      message: `Register Success, Welcome User ≪ ${result.firstName} ${result.lastName} ≫ to FakeTaxi `,
       body: result,
     });
   } catch (err) {
@@ -62,11 +62,11 @@ export async function registerYup(req, res, next) {
     // find user
     if (email) {
       let foundUserEmail = await getUserBy("email", email)
-      if(foundUserEmail) createError(409,`Email: ${email} has already been used by another user!`)
+      if(foundUserEmail) createError(409,`Email:《 ${email} 》has already been used by another user!`)
     }
     if (mobile) {
       let foundUserMobile = await getUserBy("mobile", mobile)
-      if(foundUserMobile) createError(409,`Mobile number: ${mobile} has already been used by another user!`)
+      if(foundUserMobile) createError(409,`Mobile number:《 ${mobile} 》has already been used by another user!`)
     }
     const newUser = {
       email,
@@ -75,9 +75,9 @@ export async function registerYup(req, res, next) {
       firstName,
       lastName
     }
-    const result = await createUser(newUser)
+    await createUser(newUser)
 
-    res.json({msg: `Registeration Success! Welcome User [ ${result.firstName} ${result.lastName} ] to FakeTaxi`, result})
+    res.json({message: `Registeration Success! Welcome User ≪ ${newUser.firstName} ${newUser.lastName} ≫ to FakeTaxi`})
   }catch(err) {
     next(err)
   }
@@ -103,19 +103,17 @@ export const login = async (req, res, next) => {
     expiresIn: '15d'
   })
 
-
+  const { password : pw, createdAt, updatedAt, ...userData } = foundUser
 
   res.json({
-    msg: `Login Success!! Welcome back, ${foundUser.firstName} ${foundUser.lastName}`,
-    token: token
+    message: `Login Success!! Welcome back,『 ${foundUser.firstName} ${foundUser.lastName} 』`,
+    token: token,
+    user: userData
   });
 };
 
 export const getMe = async (req, res, next) => {
-  let numUser = await prisma.user.count();
-  console.log(numUser);
-  createError(403, "BLOCK!!!");
-  res.json({ msg: "GetMe controller", numUser });
+  res.json({ user: req.user });
 };
 
 // export const getMe = (title) => {

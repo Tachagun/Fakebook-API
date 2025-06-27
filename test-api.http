@@ -19,14 +19,14 @@ POST http://localhost:8899/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "identity": "poppy@popmail.com",
-  "password": "mypoppy123456"
+  "identity": "somsak@xmail.com",
+  "password": "mysomsak123456"
 }
 
 
 ###
 GET http://localhost:8899/api/auth/me HTTP/1.1
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTc1MDkwOTA0NywiZXhwIjoxNzUyMjA1MDQ3fQ.YR93Q3lu38KCWtpoI_YxgIbPdMaWxIooWL-HeCKTLiY
 
 ###
 POST http://localhost:8899/api/post HTTP/1.1
